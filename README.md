@@ -12,12 +12,12 @@ docker network create -d bridge grafana-mongodb
 
 Start grafana container in the network created from above:
 ```
-ocker run -d -p 3000:3000 --name="grafana-mongods-7.4.2" --network grafana-mongodb cnjohnniekwok/grafana-mongods:7.4.2
+docker run -d -p 3000:3000 --name="grafana-mongods-7.4.2" --network grafana-mongodb cnjohnniekwok/grafana-mongods:7.4.2
 ```
 
 Start side mongo_proxy container:
 ```
-docker run -d -p 8001:80 --name="mongo-grafana_proxy" --network grafana-mongodb cnjohnniekwok/mongo-grafana_proxy
+docker run -d --name="mongo-grafana_proxy" --network grafana-mongodb cnjohnniekwok/mongo-grafana_proxy
 ```
 
 
