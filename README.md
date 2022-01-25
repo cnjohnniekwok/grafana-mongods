@@ -1,7 +1,7 @@
 # grafana-mongods:7.4.2 ([Docker Hub](https://hub.docker.com/repository/docker/cnjohnniekwok/grafana-mongods))
 Use specific granfana version (current build image is 7.4.2) with [JamesOsgood / mongodb-grafana](https://github.com/JamesOsgood/mongodb-grafana) plugin installed (Run proxy separately)
 
-This image will not start proxy server inside the grafana-x.x.x-mongods instance. A separate [mongo-grafana_proxy](https://hub.docker.com/repository/docker/cnjohnniekwok/mongo-grafana_proxy) container can be run along side within the same network. If you want to run mongo proxy server within the same container you can do so as well, please follow [JamesOsgood](https://github.com/JamesOsgood/mongodb-grafana#install-and-start-the-mongodb-proxy-server) start mongo proxy guide.
+This image will not start proxy server inside the grafana-x.x.x-mongods instance. A separate mongo-grafana_proxy ([DockerHub](https://hub.docker.com/repository/docker/cnjohnniekwok/mongo-grafana_proxy) | [GitHub](https://github.com/cnjohnniekwok/mongo-grafana_proxy)) container can be run along side within the same network. If you want to run mongo proxy server within the same container you can do so as well, please follow [JamesOsgood](https://github.com/JamesOsgood/mongodb-grafana#install-and-start-the-mongodb-proxy-server) start mongo proxy guide.
 
 Run grafana server ver. `7.4.2` with mongodb datasource pre-install container using `docker run` :
 
@@ -23,7 +23,7 @@ docker run -d --name="mongo-grafana_proxy" --network grafana-mongodb cnjohnniekw
 
 ***Grafana MongoDB datasource settings:***
 
-Grafana Configuration -> Data Sources tab -> MongoDB 
+Grafana Configuration -> Data Sources tab -> MongoDB
 
 Uder HTTP Setting:
 
@@ -35,4 +35,8 @@ Under MongoDB Details:
 
 MongoDB URL: `mongodb://<dbUser>:<dbPassword>@mongodb:27017`
 
-MongoDB Database: `<dbName>`
+ -OR-
+
+MongoDB URI: `mongodb+srv://<dbUser>:<dbPassword>@<dbCluster>.<dbHost.net>/`
+
+MongoDB Database: **LEAVE THIS BLANK**
